@@ -1,0 +1,56 @@
+﻿@*Khai báo để sử dụng chức năng phân trang*@
+@using SachOnline.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<SachOnline.Models.CHUDE>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 style="text-align:center;">QUẢN LÝ CHỦ ĐỀ</h2>
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaCD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().TenChuDe)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaCD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChuDe)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.MaCD })" class="btn btn-warning" role="button">Sửa</a>
+                
+                <a href="@Url.Action("Delete", new { id = item.MaCD })" class="btn btn-danger" role="button">Xóa</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*Tạo liên kết phần trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 :
+Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>

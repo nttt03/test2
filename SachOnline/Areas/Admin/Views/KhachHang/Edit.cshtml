@@ -1,0 +1,69 @@
+﻿
+@model SachOnline.Models.KHACHHANG
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHỈNH SỬA THÔNG TIN KHÁCH HÀNG</h2>
+
+@using (Html.BeginForm("Edit", "KhachHang", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Mã khách hàng:</label>
+            <div class="col-md-10">
+                @*Chỉ hiển thị mã chủ đề không cho sửa*@
+                <input type="text" size="70" name="iMaKH" value="@Model.MaKH" readonly />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Họ tên:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sTenKH" value="@Model.HoTen" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tài khoản:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sTaiKhoan" value="@Model.TaiKhoan" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Email:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sEmail" value="@Model.Email" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Điện thoại:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sDienThoai" value="@Model.DienThoai" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Địa chỉ:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="sDiaChi" value="@Model.DiaChi" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Ngày sinh:</label>
+            <div class="col-md-10">
+                <input type="text" size="70" name="dNgaySinh" value="@Model.NgaySinh" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="LƯU THÔNG TIN" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ KHÁCH HÀNG", "Index")
+</div>

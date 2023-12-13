@@ -1,0 +1,62 @@
+﻿
+
+@model SachOnline.Models.DONDATHANG
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<h2 style="text-align:center">CHI TIẾT đƠN HÀNG</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã đơn hàng:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaDonHang)
+        </dd>
+        <dt>
+            Đã thanh toán:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DaThanhToan)
+        </dd>
+        <dt>
+            Tình trạng:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TinhTrangGiaoHang)
+        </dd>
+        <dt>
+            Ngày đặt:
+        </dt>
+        <dd>
+            @Html.FormatValue(@Model.NgayDat, "{0:dd/MM/yyyy}")
+        </dd>
+        <dt>
+            Ngày giao:
+        </dt>
+        <dd>
+            @Html.FormatValue(@Model.NgayGiao, "{0:dd/MM/yyyy}")
+        </dd>
+        <dt>
+            Mã khách hàng:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MaKH)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaKH }) |
+    @Html.ActionLink("VỀ TRANG QUẢN LÝ KHÁCH HÀNG", "Index")
+</p>
